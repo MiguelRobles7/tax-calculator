@@ -41,15 +41,23 @@ func getSSS(money float64) float64{
     return sss
 }
 
-//@jmse
+// @jmse
 func getPhilHealth(money float64) float64{
     var philHealth float64 = 0
     return philHealth
 }
 
-//@miguelle
+// @miguelle - done
 func getPagIbig(money float64) float64{
     var pagIbig float64 = 0
+    if money <= 1500{
+        pagIbig = money * 0.01
+    } else{
+        pagIbig = money * 0.02
+    }
+    if pagIbig > 100{
+        pagIbig = 100
+    }
     return pagIbig
 }
 
@@ -67,12 +75,12 @@ func main() {
             var money, _ = strconv.ParseFloat(r.FormValue("money"), 64)
             data.IsGet = false
             data.Money = money
-            data.IncomeTax = getIncomeTax(money)
-            data.NetPayAfterTax = money - data.IncomeTax
             data.SSS = getSSS(money)
             data.PhilHealth = getPhilHealth(money)
             data.PagIbig = getPagIbig(money)
             data.TotalContributions = data.SSS + data.PhilHealth + data.PagIbig
+            data.IncomeTax = getIncomeTax(money)
+            data.NetPayAfterTax = money - data.IncomeTax
             data.TotalDeductions = data.IncomeTax + data.TotalContributions
             data.NetPayAfterDeductions = data.NetPayAfterTax - data.TotalDeductions
         }
