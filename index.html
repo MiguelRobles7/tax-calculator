@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Tax Calculator</title>
+    <link rel="stylesheet" href="/assets/style.css" />
+  </head>
+  <body>
+    <h1>IADNGOINADOG</h1>
+    {{if .IsGet}}
+    <h1>How much money ya got sis?!</h1>
+    <form method="POST">
+      <label>MONTHLY MONEY!?:</label><br />
+      <input type="text" name="money" /><br />
+    </form>
+    {{else}}
+    <h1>{{.Money}}</h1>
+
+    <p>Perang bibigay mo kay BBM (Income Tax): {{.IncomeTax}}</p>
+    <p>
+      Perang mo pagkatapo magbigay kay BBM (Net Pay After Tax):
+      {{.NetPayAfterTax}}
+    </p>
+
+    <p>Perang para pag tumanda ka (SSS): {{.SSS}}</p>
+    <p>Perang para pag nagkasakit ka (Philhealth): {{.PhilHealth}}</p>
+    <p>Sanaol Tax (Pag-Ibig): {{.PagIbig}}</p>
+    <p>Total ng 3 (Total Contributions): {{.TotalContributions}}</p>
+
+    <p>total na nabudol sayo (Total Deductions): {{.TotalDeductions}}</p>
+    <p>
+      pera mo after mabudol (Net Pay After Deductions):
+      {{.NetPayAfterDeductions}}
+    </p>
+
+    {{end}}
+  </body>
+</html>
