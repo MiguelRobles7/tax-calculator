@@ -37,7 +37,13 @@ func getIncomeTax(money float64) float64 {
 }
 // @izabelle
 func getSSS(money float64) float64{
-    var sss float64 = 0
+    var minLimit float64 = 4250
+    var sss float64 = 180
+    if money >= minLimit {
+	    for i:= minLimit; i<=money; i+=499.99 {
+	    	sss+=22.5
+	    }
+    } 
     return sss
 }
 
