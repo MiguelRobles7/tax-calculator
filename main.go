@@ -43,7 +43,7 @@ func getSSS(money float64) float64{
     if money >= maxLimit{
         sss=1350.00
     } else if money >= minLimit {
-	    for i:= minLimit; i<=money; i+=499.99 {
+	    for i:= minLimit; i<=money; i+=500 {
 	    	sss+=22.5
 	    }
     } 
