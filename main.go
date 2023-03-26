@@ -41,9 +41,17 @@ func getSSS(money float64) float64{
     return sss
 }
 
-// @jmse
+// @jmse - done (will update after clarify w/ sir)
+// PhilHeatlh calculator uses 2023 Employed Membership: 2.25% rate 
 func getPhilHealth(money float64) float64{
     var philHealth float64 = 0
+    if money <= 10000.00 {
+        philHealth = 225.00
+    } else if money >= 10000.01 && money <= 89999.99 {
+        philHealth = money * 0.0225
+    } else if money >= 90000.00 {
+        philHealth = 4050.00
+    }
     return philHealth
 }
 
