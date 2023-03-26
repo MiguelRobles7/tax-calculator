@@ -1,14 +1,12 @@
 # Tax Calculator
 
-For De La Salle University course CSADPRG (Advanced Programming), made with Go
+Major Course Output for CSADPRG (Advanced Programming) class at De La Salle University.
 
 ## **Prerequisites**
 
 Install Go `=> version 1.2`
 
-## **Running**
-
-To build the project
+## **Running Project**
 
 ```bash
   git clone https://github.com/MiguelRobles7/tax-calculator && cd tax-calculator

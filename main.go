@@ -64,7 +64,7 @@ func getPhilHealth(money float64) float64{
     return philHealth
 }
 
-// @miguelle - done
+// @miguelle - done - will ask sir if capped at 100 talaga cause thats what the online tool does
 func getPagIbig(money float64) float64{
     var pagIbig float64 = 0
     if money <= 1500{
@@ -72,7 +72,7 @@ func getPagIbig(money float64) float64{
     } else{
         pagIbig = money * 0.02
     }
-    if pagIbig > 100{
+    if pagIbig > 100 {
         pagIbig = 100
     }
     return pagIbig
