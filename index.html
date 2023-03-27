@@ -8,14 +8,11 @@
     <link rel="stylesheet" href="/assets/style.css" />
   </head>
   <body>
-    {{if .IsGet}}
     <h1>How much money ya got sis?!</h1>
     <form method="POST">
       <label>MONTHLY MONEY!?:</label><br />
       <input type="text" name="money" /><br />
     </form>
-    {{else}}
-    <h1>{{.Money}}</h1>
 
     <p>Perang bibigay mo kay BBM (Income Tax): {{.IncomeTax}}</p>
     <p>
@@ -33,7 +30,5 @@
       pera mo after mabudol (Net Pay After Deductions):
       {{.NetPayAfterDeductions}}
     </p>
-
-    {{end}}
   </body>
 </html>

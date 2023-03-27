@@ -2,6 +2,7 @@ package main
 
 import (
 	"html/template"
+	"math"
 	"net/http"
 	"strconv"
 )
@@ -19,20 +20,20 @@ type Data struct {
     NetPayAfterDeductions float64
 }
 
-// di pa toh accurate @miguelle
+// Using 2023 tax table, thats what the online calculator uses but the tax table there is not updated yet
 func getIncomeTax(money float64) float64 {
     if money <= 20833 {
         return 0
     } else if money <= 33332 {
-        return (money * 0.2)
+        return ((money - 20833.33) * 0.1505) + 0
     } else if money <= 66666 {
-        return (money - 2500) * 0.25
+        return ((money - 33333) * 0.20) + 1875
     } else if money <= 166666 {
-        return (money - 10833.33) * 0.3
+        return ((money - 66667) * 0.25) + 8541.80
     } else if money <= 666666 {
-        return (money - 40833.33) * 0.32
+        return ((money - 166667) * 0.30) + 33541.80 
     } else {
-        return (money - 200833.33) * 0.35
+        return ((money - 666667) * 0.35) + 183541.80
     }
 }
 // @izabelle
@@ -78,6 +79,16 @@ func getPagIbig(money float64) float64{
     return pagIbig
 }
 
+// Helper Functions to Round Seemlessly 
+func round(num float64) int {
+    return int(num + math.Copysign(0.5, num))
+}
+
+func toFixed(num float64, precision int) float64 {
+    output := math.Pow(10, float64(precision))
+    return float64(round(num * output)) / output
+}
+
 func main() {
     tmpl := template.Must(template.ParseFiles("index.html"))
     data := Data{IsGet: false, Money: 0}
@@ -96,7 +107,7 @@ func main() {
             data.PhilHealth = getPhilHealth(money)
             data.PagIbig = getPagIbig(money)
             data.TotalContributions = data.SSS + data.PhilHealth + data.PagIbig
-            data.IncomeTax = getIncomeTax(money)
+            data.IncomeTax = getIncomeTax(money - data.TotalContributions)
             data.NetPayAfterTax = money - data.IncomeTax
             data.TotalDeductions = data.IncomeTax + data.TotalContributions
             data.NetPayAfterDeductions = data.NetPayAfterTax - data.TotalDeductions
