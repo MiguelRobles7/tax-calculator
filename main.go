@@ -2,9 +2,10 @@ package main
 
 import (
 	"html/template"
-	"math"
 	"net/http"
 	"strconv"
+
+	"github.com/dustin/go-humanize"
 )
 
 type Data struct {
@@ -20,6 +21,17 @@ type Data struct {
     NetPayAfterDeductions float64
 }
 
+type DataString struct {
+	Money string
+    IncomeTax string
+    NetPayAfterTax string
+    SSS string
+    PhilHealth string
+    PagIbig string
+    TotalContributions string
+    TotalDeductions string
+    NetPayAfterDeductions string
+}
 // Using 2023 tax table, thats what the online calculator uses but the tax table there is not updated yet
 func getIncomeTax(money float64) float64 {
     if money <= 20833 {
@@ -79,20 +91,10 @@ func getPagIbig(money float64) float64{
     return pagIbig
 }
 
-// Helper Functions to Round Seemlessly 
-func round(num float64) int {
-    return int(num + math.Copysign(0.5, num))
-}
-
-func toFixed(num float64, precision int) float64 {
-    output := math.Pow(10, float64(precision))
-    return float64(round(num * output)) / output
-}
-
 func main() {
     tmpl := template.Must(template.ParseFiles("index.html"))
     data := Data{IsGet: false, Money: 0}
-
+    dataString := DataString{}
     http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
         if r.Method != http.MethodPost {
             println("GET")
@@ -106,13 +108,23 @@ func main() {
             data.SSS = getSSS(money)
             data.PhilHealth = getPhilHealth(money)
             data.PagIbig = getPagIbig(money)
-            data.TotalContributions = data.SSS + data.PhilHealth + data.PagIbig
+            data.TotalContributions = (data.SSS + data.PhilHealth + data.PagIbig)
             data.IncomeTax = getIncomeTax(money - data.TotalContributions)
             data.NetPayAfterTax = money - data.IncomeTax
             data.TotalDeductions = data.IncomeTax + data.TotalContributions
             data.NetPayAfterDeductions = data.NetPayAfterTax - data.TotalDeductions
+
+            dataString.Money = humanize.CommafWithDigits(money, 4)
+            dataString.SSS = humanize.CommafWithDigits(data.SSS, 4)
+            dataString.PhilHealth = humanize.CommafWithDigits(data.PhilHealth, 4)
+            dataString.PagIbig = humanize.CommafWithDigits(data.PagIbig, 4)
+            dataString.TotalContributions = humanize.CommafWithDigits(data.TotalContributions, 4)
+            dataString.IncomeTax = humanize.CommafWithDigits(data.IncomeTax, 4)
+            dataString.NetPayAfterTax = humanize.CommafWithDigits(data.NetPayAfterTax, 4)
+            dataString.TotalDeductions = humanize.CommafWithDigits(data.TotalDeductions, 4)
+            dataString.NetPayAfterDeductions = humanize.CommafWithDigits(data.NetPayAfterDeductions, 4)
         }
-        tmpl.Execute(w, data)
+        tmpl.Execute(w, dataString)
     })
 
     http.ListenAndServe(":8080", nil)
