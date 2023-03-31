@@ -25,21 +25,78 @@
     <div class="result">
       <div class="card">
 
-        <div class="t-income">
+        <div class="t-income ltr ju">
           <div class="ti-text">
             <h6>Your Monthly Income</h6>
-            <p>20000</p>
+            <div class="ltr">
+              <h3>₱</h3>
+              <h1>20000</h1>
+            </div>
           </div>
-          <button type="button" class="ti-return">Return</button>
+          <button type="button" class="ti-return">
+            Return
+          </button>
         </div>
 
-        <p>Your Tax Summary</p>
-        <div class="t-summary">
-          <div class="ts-text">
+        <h6>Your Tax Summary</h6>
+
+        <div class="t-summary ltr ju">
+          <div class="ts-summary ltr">
+            <span class="tsi-logo">a</span>
             <h6>Income Tax</h6>
-            <p>2000</p>
           </div>
-          <button type="button" class="ts-return">Return</button>
+          <p>{{.IncomeTax}}</p>
+        </div>
+
+        <div class="t-niat ltr ju">
+          <h6>Net Income After Tax</h6>
+          <h3>{{.NetPayAfterTax}}</h3>
+        </div>
+
+        <div class="t-summary ltr ju">
+          <div class="ts-summary ltr">
+            <span class="tsi-logo">a</span>
+            <h6>SSS Contribution</h6>
+          </div>
+          <p>{{.SSS}}</p>
+        </div>
+
+        <div class="t-summary ltr ju">
+          <div class="ts-summary ltr">
+            <span class="tsi-logo">a</span>
+            <h6>Pag-IBIG Contribution</h6>
+          </div>
+          <p>{{.PagIbig}}</p>
+        </div>
+
+        <div class="t-summary ltr ju">
+          <div class="ts-summary ltr">
+            <span class="tsi-logo">a</span>
+            <h6>PhilHealth Contribution</h6>
+          </div>
+          <p>{{.PhilHealth}}</p>
+        </div>
+
+        <div class="t-niat ltr ju">
+          <h6>Total Contributions</h6>
+          <h3>{{.TotalContributions}}</h3>
+        </div>
+
+        <div class="t-rec ltr ju">
+          <h6>Income Tax</h6>
+          <p>{{.IncomeTax}}</p>
+        </div>
+
+        <div class="t-rec ltr ju">
+          <h6>Total Contributions</h6>
+          <p>{{.TotalContributions}}</p>
+        </div>
+
+        <div class="t-niat ltr ju">
+          <h6>Subtotal</h6>
+          <h1>{{.NetPayAfterDeductions}}</h1>
+        </div>
+
       </div>
     </div>
 
@@ -78,28 +135,6 @@
         </div>
       </div>
     </div>
-
-    <!-- <h1>How much money ya got sis?!</h1>
-    <form method="POST">
-      <label>MONTHLY MONEY!?:</label><br />
-      <input type="text" name="money" /><br />
-    </form>
-
-    <p>Perang bibigay mo kay BBM (Income Tax): {{.IncomeTax}}</p>
-    <p>
-      Perang mo pagkatapos magbigay kay BBM (Net Pay After Tax):
-      {{.NetPayAfterTax}}
-    </p>
-
-    <p>Perang para pag tumanda ka (SSS): {{.SSS}}</p>
-    <p>Perang para pag nagkasakit ka (Philhealth): {{.PhilHealth}}</p>
-    <p>Sanaol Tax (Pag-Ibig): {{.PagIbig}}</p>
-    <p>Total ng 3 (Total Contributions): {{.TotalContributions}}</p>
-
-    <p>total na nabudol sayo (Total Deductions): {{.TotalDeductions}}</p>
-    <p>
-      pera mo after mabudol (Net Pay After Deductions):
-      {{.NetPayAfterDeductions}}
-    </p> -->
+    
   </body>
 </html>

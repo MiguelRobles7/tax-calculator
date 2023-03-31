@@ -1,3 +1,14 @@
+@font-face {
+  font-family: 'BASEBLOOM';
+  src: url('/assets/type/BASEBLOOM.otf');
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/assets/type/Inter.ttf');
+}
+
+
 * {
   margin: 0;
   padding: 0;
@@ -35,7 +46,7 @@ nav a {
 }
 
 .nleft a {
-  font-family: 'BASE&BLOOM';
+  font-family: BASEBLOOM;
 }
 
 .nright a {
@@ -45,7 +56,6 @@ nav a {
 
 
 .container {
-  visibility: hidden;
   height: 100vh;
 
   justify-content: center;
@@ -126,6 +136,7 @@ nav a {
 
 .inputbox input[type="number"] {
   width: 100%;
+  margin-right: 2rem;
   
   border: none;
   outline: none;
@@ -226,8 +237,8 @@ nav a {
   position: absolute;
   
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
 .card {
@@ -245,8 +256,41 @@ nav a {
   transition: 1s;
 }
 
+.ltr {
+  display: flex;
+}
+
 .topcard {
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
+
+.ju {
+  justify-content: space-between;
+}
+
+.ti-text h3 {
+  font-weight: 500;
+  color: #fff;
+}
+
+.t-income button {
+  height: 1.4rem;
+  padding: 0.3rem 1rem;
+
+  border: none;
+  outline: none;
+
+  background: linear-gradient(180deg, #737FEF 0%, #5260DE 100%);
+  box-shadow: 0px 0px 40px rgba(0, 56, 255, 0.2);
+  border-radius: 26px;
+
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 600;
+
+  cursor: pointer;
+  white-space: nowrap;
+}
+
