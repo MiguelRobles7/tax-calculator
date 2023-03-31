@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>PH Tax Calculator</title>
-    <link rel="stylesheet" href="/assets/style.css" />
+    <link rel="stylesheet" href="/st/style.css" />
+    <!-- import app,js -->
+    <script src="/st/app.js"></script>
   </head>
   
   <body>
@@ -20,9 +22,30 @@
         <a href="/contact">Contact</a>
     </nav>
 
+    <div class="result">
+      <div class="card">
+
+        <div class="t-income">
+          <div class="ti-text">
+            <h6>Your Monthly Income</h6>
+            <p>20000</p>
+          </div>
+          <button type="button" class="ti-return">Return</button>
+        </div>
+
+        <p>Your Tax Summary</p>
+        <div class="t-summary">
+          <div class="ts-text">
+            <h6>Income Tax</h6>
+            <p>2000</p>
+          </div>
+          <button type="button" class="ts-return">Return</button>
+      </div>
+    </div>
+
     <!-- container -->
     <div class="container">
-      <div class="fl">
+      <div class="fl pwtop">
         <img src="/assets/pw-btn.png"/>
         <p>Powered by Go</p>
       </div>
@@ -34,9 +57,9 @@
 
       <div class="inputbox">
         <h3>Php</h3>
-        <form method="POST">
-          <input type="text" name="money" placeholder="100,000.00"/>
-          <input type="submit" value="Calculate" />
+        <form method="POST" autocomplete="off">
+          <input type="number" name="money" id="nminput" placeholder="Enter amount"/>
+          <button type="submit">Calculate <span>-></span></button>
         </form>
       </div>
 
@@ -55,16 +78,6 @@
         </div>
       </div>
     </div>
-
-    <!-- widger -->
-    <!-- <div class="pw-btn">
-      <img src="/assets/pw-btn.png" alt="pw-btn"/>
-      <p>Powered by Go</p>
-    </div> -->
-
-    <!-- header -->
-
-
 
     <!-- <h1>How much money ya got sis?!</h1>
     <form method="POST">
