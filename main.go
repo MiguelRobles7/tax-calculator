@@ -95,6 +95,7 @@ func main() {
     tmpl := template.Must(template.ParseFiles("index.html"))
     data := Data{IsGet: false, Money: 0}
     dataString := DataString{}
+    http.Handle("/st/", http.StripPrefix("/st/", http.FileServer(http.Dir("st"))))
     http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
         if r.Method != http.MethodPost {
             println("GET")
@@ -108,11 +109,11 @@ func main() {
             data.SSS = getSSS(money)
             data.PhilHealth = getPhilHealth(money)
             data.PagIbig = getPagIbig(money)
-            data.TotalContributions = (data.SSS + data.PhilHealth + data.PagIbig)
+            data.TotalContributions = (data.SSS + data.PhilHealth + data.PagIbig + data.IncomeTax)
             data.IncomeTax = getIncomeTax(money - data.TotalContributions)
             data.NetPayAfterTax = money - data.IncomeTax
             data.TotalDeductions = data.IncomeTax + data.TotalContributions
-            data.NetPayAfterDeductions = data.NetPayAfterTax - data.TotalDeductions
+            data.NetPayAfterDeductions =data.TotalDeductions
 
             dataString.Money = humanize.CommafWithDigits(money, 4)
             dataString.SSS = humanize.CommafWithDigits(data.SSS, 4)

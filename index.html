@@ -22,83 +22,6 @@
         <a href="/contact">Contact</a>
     </nav>
 
-    <div class="result">
-      <div class="card">
-
-        <div class="t-income ltr ju">
-          <div class="ti-text">
-            <h6>Your Monthly Income</h6>
-            <div class="ltr">
-              <h3>₱</h3>
-              <h1>20000</h1>
-            </div>
-          </div>
-          <button type="button" class="ti-return">
-            Return
-          </button>
-        </div>
-
-        <h6>Your Tax Summary</h6>
-
-        <div class="t-summary ltr ju">
-          <div class="ts-summary ltr">
-            <span class="tsi-logo">a</span>
-            <h6>Income Tax</h6>
-          </div>
-          <p>{{.IncomeTax}}</p>
-        </div>
-
-        <div class="t-niat ltr ju">
-          <h6>Net Income After Tax</h6>
-          <h3>{{.NetPayAfterTax}}</h3>
-        </div>
-
-        <div class="t-summary ltr ju">
-          <div class="ts-summary ltr">
-            <span class="tsi-logo">a</span>
-            <h6>SSS Contribution</h6>
-          </div>
-          <p>{{.SSS}}</p>
-        </div>
-
-        <div class="t-summary ltr ju">
-          <div class="ts-summary ltr">
-            <span class="tsi-logo">a</span>
-            <h6>Pag-IBIG Contribution</h6>
-          </div>
-          <p>{{.PagIbig}}</p>
-        </div>
-
-        <div class="t-summary ltr ju">
-          <div class="ts-summary ltr">
-            <span class="tsi-logo">a</span>
-            <h6>PhilHealth Contribution</h6>
-          </div>
-          <p>{{.PhilHealth}}</p>
-        </div>
-
-        <div class="t-niat ltr ju">
-          <h6>Total Contributions</h6>
-          <h3>{{.TotalContributions}}</h3>
-        </div>
-
-        <div class="t-rec ltr ju">
-          <h6>Income Tax</h6>
-          <p>{{.IncomeTax}}</p>
-        </div>
-
-        <div class="t-rec ltr ju">
-          <h6>Total Contributions</h6>
-          <p>{{.TotalContributions}}</p>
-        </div>
-
-        <div class="t-niat ltr ju">
-          <h6>Subtotal</h6>
-          <h1>{{.NetPayAfterDeductions}}</h1>
-        </div>
-
-      </div>
-    </div>
 
     <!-- container -->
     <div class="container">
@@ -133,6 +56,96 @@
           <img src="/assets/pw-btn.png"/>
           <p>Pag-IBIG</p>
         </div>
+      </div>
+    </div>
+
+    
+    <!-- result -->
+    <div class="result">
+      <div class="card">
+
+        <!-- income row -->
+        <div class="r-income ltr ju">
+          <div class="ti-text">
+            <h6>Your Monthly Income</h6>
+            <div class="ltr">
+              <h3>₱</h3>
+              <h1>0</h1>
+            </div>
+          </div>
+          <button type="button" class="ti-return">
+            Return
+          </button>
+        </div>
+
+        <h6>Your Tax Summary</h6>
+
+        <!-- income tax row -->
+        <div class="t-summary ltr ju">
+          <div class="ts-summary ltr">
+            <span class="tsi-logo"></span>
+            <h6>Income Tax</h6>
+          </div>
+          <p>{{.IncomeTax}}</p>
+        </div>
+
+        <!-- net income after tax row -->
+        <div class="t-niat ltr ju">
+          <h6>Net Income After Tax</h6>
+          <h3>{{.NetPayAfterTax}}</h3>
+        </div>
+
+        <!-- sss row -->
+        <div class="t-summary ltr ju">
+          <div class="ts-summary ltr">
+            <span class="tsi-logo"></span>
+            <h6>SSS Contribution</h6>
+          </div>
+          <p>{{.SSS}}</p>
+        </div>
+
+        <!-- pagibig row -->
+        <div class="t-summary ltr ju">
+          <div class="ts-summary ltr">
+            <span class="tsi-logo"></span>
+            <h6>Pag-IBIG Contribution</h6>
+          </div>
+          <p>{{.PagIbig}}</p>
+        </div>
+
+        <!-- philhealth row -->
+        <div class="t-summary ltr ju">
+          <div class="ts-summary ltr">
+            <span class="tsi-logo"></span>
+            <h6>PhilHealth Contribution</h6>
+          </div>
+          <p>{{.PhilHealth}}</p>
+        </div>
+
+        <!-- total contributions row -->
+        <div class="t-niat ltr ju">
+          <h6>Total Contributions</h6>
+          <h3>{{.TotalContributions}}</h3>
+        </div>
+
+        <!-- income tax row -->
+        <div class="t-rec ltr ju">
+          <h6>Income Tax</h6>
+          <p>{{.IncomeTax}}</p>
+        </div>
+
+        <!-- total contributions row -->
+        <div class="t-rec ltr ju">
+          <h6>Total Contributions</h6>
+          <p>{{.TotalContributions}}</p>
+        </div>
+
+        <!-- net income after deductions row -->
+        <div class="t-niat ltr ju">
+          <h6>Subtotal</h6>
+          <h1>{{.NetPayAfterDeductions}}</h1>
+        </div>
+
       </div>
     </div>
     
