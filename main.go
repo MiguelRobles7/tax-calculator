@@ -32,12 +32,12 @@ type DataString struct {
     TotalDeductions string
     NetPayAfterDeductions string
 }
-// Using 2023 tax table, thats what the online calculator uses but the tax table there is not updated yet
+
 func getIncomeTax(money float64) float64 {
     if money <= 20833 {
         return 0
     } else if money <= 33332 {
-        return ((money - 20833.33) * 0.1505) + 0
+        return ((money - 20833.33) * 0.15) + 0
     } else if money <= 66666 {
         return ((money - 33333) * 0.20) + 1875
     } else if money <= 166666 {
@@ -48,7 +48,7 @@ func getIncomeTax(money float64) float64 {
         return ((money - 666667) * 0.35) + 183541.80
     }
 }
-// @izabelle
+
 func getSSS(money float64) float64{
     var minLimit float64 = 4250
     var maxLimit float64 = 29750
@@ -63,8 +63,6 @@ func getSSS(money float64) float64{
     return sss
 }
 
-// @jmse - done (will update after clarify w/ sir)
-// PhilHeatlh calculator uses 2023 Employed Membership: 2.25% rate 
 func getPhilHealth(money float64) float64{
     var philHealth float64 = 0
     if money <= 10000.00 {
@@ -77,7 +75,6 @@ func getPhilHealth(money float64) float64{
     return philHealth
 }
 
-// @miguelle - done - will ask sir if capped at 100 talaga cause thats what the online tool does
 func getPagIbig(money float64) float64{
     var pagIbig float64 = 0
     if money <= 1500{
@@ -99,34 +96,37 @@ func main() {
     http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
         if r.Method != http.MethodPost {
             println("GET")
-            data.IsGet = true
-            data.Money = float64(0)
+            data = Data{IsGet: true, Money: 0}
         } else {
             println("POST")
             var money, _ = strconv.ParseFloat(r.FormValue("money"), 64)
-            data.IsGet = false
-            data.Money = money
-            data.SSS = getSSS(money)
-            data.PhilHealth = getPhilHealth(money)
-            data.PagIbig = getPagIbig(money)
+            data = Data{
+                IsGet: false,
+                Money: money,
+                SSS: getSSS(money),
+                PhilHealth: getPhilHealth(money),
+                PagIbig: getPagIbig(money),
+            }
             data.TotalContributions = (data.SSS + data.PhilHealth + data.PagIbig + data.IncomeTax)
             data.IncomeTax = getIncomeTax(money - data.TotalContributions)
             data.NetPayAfterTax = money - data.IncomeTax
             data.TotalDeductions = data.IncomeTax + data.TotalContributions
-            data.NetPayAfterDeductions =data.TotalDeductions
+            data.NetPayAfterDeductions = money - data.TotalDeductions
 
-            dataString.Money = humanize.CommafWithDigits(money, 4)
-            dataString.SSS = humanize.CommafWithDigits(data.SSS, 4)
-            dataString.PhilHealth = humanize.CommafWithDigits(data.PhilHealth, 4)
-            dataString.PagIbig = humanize.CommafWithDigits(data.PagIbig, 4)
-            dataString.TotalContributions = humanize.CommafWithDigits(data.TotalContributions, 4)
-            dataString.IncomeTax = humanize.CommafWithDigits(data.IncomeTax, 4)
-            dataString.NetPayAfterTax = humanize.CommafWithDigits(data.NetPayAfterTax, 4)
-            dataString.TotalDeductions = humanize.CommafWithDigits(data.TotalDeductions, 4)
-            dataString.NetPayAfterDeductions = humanize.CommafWithDigits(data.NetPayAfterDeductions, 4)
+            dataString = DataString{
+                Money: humanize.CommafWithDigits(money, 2),
+                SSS: humanize.CommafWithDigits(data.SSS, 2),
+                PhilHealth: humanize.CommafWithDigits(data.PhilHealth, 2),
+                PagIbig: humanize.CommafWithDigits(data.PagIbig, 2),
+                TotalContributions: humanize.CommafWithDigits(data.TotalContributions, 2),
+                IncomeTax: humanize.CommafWithDigits(data.IncomeTax, 2),
+                NetPayAfterTax: humanize.CommafWithDigits(data.NetPayAfterTax, 2),
+                TotalDeductions: humanize.CommafWithDigits(data.TotalDeductions, 2),
+                NetPayAfterDeductions: humanize.CommafWithDigits(data.NetPayAfterDeductions, 2),
+            }            
         }
         tmpl.Execute(w, dataString)
     })
-
+    println("Serving on http://localhost:8080/")
     http.ListenAndServe(":8080", nil)
 }

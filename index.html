@@ -70,7 +70,7 @@
             <h6>Your Monthly Income</h6>
             <div class="ltr">
               <h3>₱</h3>
-              <h1>0</h1>
+              <h1>{{.Money}}</h1>
             </div>
           </div>
           <button type="button" class="ti-return">
@@ -91,7 +91,7 @@
 
         <!-- net income after tax row -->
         <div class="t-niat ltr ju">
-          <h6>Net Income After Tax</h6>
+          <h6>Net Pay After Tax</h6>
           <h3>{{.NetPayAfterTax}}</h3>
         </div>
 
@@ -104,6 +104,15 @@
           <p>{{.SSS}}</p>
         </div>
 
+        <!-- philhealth row -->
+        <div class="t-summary ltr ju">
+          <div class="ts-summary ltr">
+            <span class="tsi-logo"></span>
+            <h6>PhilHealth Contribution</h6>
+          </div>
+          <p>{{.PhilHealth}}</p>
+        </div>
+        
         <!-- pagibig row -->
         <div class="t-summary ltr ju">
           <div class="ts-summary ltr">
@@ -113,31 +122,16 @@
           <p>{{.PagIbig}}</p>
         </div>
 
-        <!-- philhealth row -->
-        <div class="t-summary ltr ju">
-          <div class="ts-summary ltr">
-            <span class="tsi-logo"></span>
-            <h6>PhilHealth Contribution</h6>
-          </div>
-          <p>{{.PhilHealth}}</p>
-        </div>
-
-        <!-- total contributions row -->
-        <div class="t-niat ltr ju">
-          <h6>Total Contributions</h6>
-          <h3>{{.TotalContributions}}</h3>
-        </div>
-
-        <!-- income tax row -->
-        <div class="t-rec ltr ju">
-          <h6>Income Tax</h6>
-          <p>{{.IncomeTax}}</p>
-        </div>
-
         <!-- total contributions row -->
         <div class="t-rec ltr ju">
           <h6>Total Contributions</h6>
           <p>{{.TotalContributions}}</p>
+        </div>
+
+        <!-- income tax row -->
+        <div class="t-rec ltr ju">
+          <h6>Total Deductions</h6>
+          <p>{{.TotalDeductions}}</p>
         </div>
 
         <!-- net income after deductions row -->
