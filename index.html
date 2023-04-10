@@ -9,9 +9,8 @@
     <!-- import app,js -->
     <script src="/st/app.js"></script>
   </head>
-  
-  <body>
 
+  <body>
     <!-- top navbar-->
     <nav>
       <div class="nleft">
@@ -20,52 +19,57 @@
       <div class="nright">
         <a href="/about">About</a>
         <a href="/contact">Contact</a>
+      </div>
     </nav>
-
-
+    {{if .IsGet}}
     <!-- container -->
     <div class="c1">
       <div class="fl pwtop">
-        <img src="/assets/pw-btn.png"/>
+        <img src="/assets/pw-btn.png" />
         <p>Powered by Go</p>
       </div>
 
       <header>
-        <h1>The only tax calculator <br> you'll ever need.</h1>
+        <h1>
+          The only tax calculator <br />
+          you'll ever need.
+        </h1>
         <p>Enter your monthly income in Philippine Peso (PHP).</p>
       </header>
 
       <div class="inputbox">
         <h3>Php</h3>
         <form method="POST" autocomplete="off">
-          <input type="number" name="money" id="nminput" placeholder="Enter amount"/>
-          <button type="submit">
-            Calculate <span>-></span>
-          </button>
+          <input
+            type="number"
+            name="money"
+            id="nminput"
+            placeholder="Enter amount"
+          />
+          <button type="submit">Calculate <span>-></span></button>
         </form>
       </div>
 
       <div class="flags">
         <div class="fl">
-          <img src="/assets/pw-btn.png"/>
+          <img src="/assets/pw-btn.png" />
           <p>PhilHealth</p>
         </div>
         <div class="fl">
-          <img src="/assets/pw-btn.png"/>
+          <img src="/assets/pw-btn.png" />
           <p>SSS</p>
         </div>
         <div class="fl">
-          <img src="/assets/pw-btn.png"/>
+          <img src="/assets/pw-btn.png" />
           <p>Pag-IBIG</p>
         </div>
       </div>
     </div>
 
-    
+    {{else}}
     <!-- result -->
     <div class="c2">
       <div class="card">
-
         <!-- income row -->
         <div class="r-base ltr jtf mb">
           <div class="r-base-hd">
@@ -75,9 +79,16 @@
               <h1>{{.Money}}</h1>
             </div>
           </div>
-          <button type="button">
-            Return &nbsp; <span>-></span>
-          </button>
+          <form method="POST" autocomplete="off">
+            <input
+              style="display: none"
+              type="number"
+              name="money"
+              id="nminput"
+              value="0"
+            />
+            <button type="submit">Return &nbsp;<span>-></span></button>
+          </form>
         </div>
 
         <!-- tax summary row -->
@@ -165,9 +176,8 @@
           <h6>Subtotal</h6>
           <h3>{{.NetPayAfterDeductions}}</h3>
         </div>
-
       </div>
     </div>
-    
+    {{end}}
   </body>
 </html>

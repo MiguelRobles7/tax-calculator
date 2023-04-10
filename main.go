@@ -22,6 +22,7 @@ type Data struct {
 }
 
 type DataString struct {
+    IsGet bool
 	Money string
     IncomeTax string
     NetPayAfterTax string
@@ -97,6 +98,7 @@ func main() {
         if r.Method != http.MethodPost {
             println("GET")
             data = Data{IsGet: true, Money: 0}
+            dataString = DataString{IsGet: true, Money: ""}
         } else {
             println("POST")
             var money, _ = strconv.ParseFloat(r.FormValue("money"), 64)
@@ -124,6 +126,12 @@ func main() {
                 TotalDeductions: humanize.CommafWithDigits(data.TotalDeductions, 2),
                 NetPayAfterDeductions: humanize.CommafWithDigits(data.NetPayAfterDeductions, 2),
             }            
+            if money <= 0{
+                dataString.IsGet = true
+            } else{
+                dataString.IsGet = false
+            }
+
         }
         tmpl.Execute(w, dataString)
     })
