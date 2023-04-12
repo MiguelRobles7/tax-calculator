@@ -1,3 +1,15 @@
+/*********************
+Name:
+	Ballatan, James
+	Imperial, Izabella
+	Robles, Miguel
+	Serato, Ivan
+Language: 
+	Go
+Paradigm:
+	Imperative - Object-oriented Programming
+*********************/
+
 package main
 
 import (
