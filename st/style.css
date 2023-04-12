@@ -21,7 +21,7 @@ body {
   background: 
     radial-gradient(50% 100% at 50% 150%, #090E3A 0%, rgba(0, 0, 0, 0) 100%), 
     radial-gradient(75% 140% at 50% 150%, #090E3A 0%, rgba(0, 0, 0, 0) 100%), 
-    #111214;
+    #0c0c0e;
   background-blend-mode: screen, screen, normal;
 }
 
@@ -48,6 +48,10 @@ nav a {
 .nleft a {
   font-family: BASEBLOOM;
 }
+.nleft a:hover {
+  color: #fff;
+  transition: all 0.5s ease-in-out;
+}
 
 .nright a {
   margin: 0 0.5rem;
@@ -57,6 +61,7 @@ nav a {
 /*/ c1 */
 .c1 {
   height: 100vh;
+  top: 0;
 
   justify-content: center;
   align-items: center;
@@ -233,13 +238,16 @@ nav a {
 
 /*/ container 2 */
 .c2 { 
-
   height: 100vh;
   width: 100vw;
   
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #E2E1FF;
+
+  text-shadow: 0px 0px 20px rgba(255, 255, 255, 0.1);
+  transition: all 1s ease-in-out;
 }
 
 /* results card */
@@ -247,15 +255,13 @@ nav a {
   width: 26rem;
   height: 36rem;
 
-  background: rgba(0, 0, 0, 0.5);
-  color: #fff; 
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.35) 100%);
   box-shadow: 0px 0px 40px rgba(40, 50, 104, 0.2), 
     inset 0px 0px 40px rgba(26, 32, 85, 0.25);
   backdrop-filter: blur(2px);
 
   padding: 2rem;
   border-radius: 0.5rem;
-  /*transition: 1s;*/
 }
 
 /* utility classes */
@@ -279,7 +285,8 @@ nav a {
 }
 
 .dvdr {
-  background-color: #1c1c25;
+  background-color: #363641;
+  opacity: 0.2;
   height: 0.2rem;
   margin: 0.3rem 0;
   border-radius: 0.5rem;
@@ -290,7 +297,6 @@ nav a {
 }
 .r-base h6 {
   font-weight: 500;
-  color: #fff;
 }
 .r-base h3 {
   line-height: 1.6;
@@ -317,9 +323,15 @@ nav a {
   cursor: pointer;
 
   font-size: 0.6rem;
+  opacity: 0.4;
+  transition: all 1s ease;
 }
+.r-base button:hover {
+  opacity: 1;
+}
+
 .r-base button:hover span {
-  margin-left: 0.5rem;
+  margin-right: 0.5rem;
   transition: 1s;
 }
 .r-base button span {
@@ -327,20 +339,8 @@ nav a {
   transition: 1s;
 }
 
-
-.r-entry .lgc {
-  width: 1.4rem;
-  height: 1.4rem;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background-color: #090E3A;
-  border-radius: 1rem;
-}
 .r-entry img {
-  width: 0.8rem;
+  width: 1.2rem;
 }
 .r-entry h6 {
   margin-left: 0.6rem; 
@@ -348,4 +348,32 @@ nav a {
 
 .t-nias h1 {
   font-size: 1rem;
+}
+.t-niad h3 {
+  font-size: 1.8rem;
+}
+
+.clr {
+  background: linear-gradient(0deg, rgba(226, 225, 255, 0.3), rgba(226, 225, 255, 0.3)), linear-gradient(180deg, #737FEF 0%, #5260DE 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+  text-shadow: 0px 0px 20px rgba(115, 127, 239, 0.3);
+}
+.clr h4 {
+  line-height: 1.8;
+}
+.clr h3 {
+  letter-spacing: -0.05rem;
+}
+
+.ring {
+  width: 0.6rem;
+  height: 0.6rem;
+
+  border-radius: 1rem;
+  border: 0.15rem solid #fff;
+
+  margin-right: 0.4rem;
 }

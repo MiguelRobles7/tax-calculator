@@ -4,10 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>PH Tax Calculator</title>
+    <title>SYNCTAX</title>
     <link rel="stylesheet" href="/st/style.css" />
-    <!-- import app,js -->
-    <script src="/st/app.js"></script>
   </head>
 
   <body>
@@ -25,7 +23,7 @@
     <!-- container -->
     <div class="c1">
       <div class="fl pwtop">
-        <img src="/assets/pw-btn.png" />
+        <img src="/st/assets/pw-btn.png" />
         <p>Powered by Go</p>
       </div>
 
@@ -52,15 +50,15 @@
 
       <div class="flags">
         <div class="fl">
-          <img src="/assets/pw-btn.png" />
+          <div class="ring"></div>
           <p>PhilHealth</p>
         </div>
         <div class="fl">
-          <img src="/assets/pw-btn.png" />
+          <div class="ring"></div>
           <p>SSS</p>
         </div>
         <div class="fl">
-          <img src="/assets/pw-btn.png" />
+          <div class="ring"></div>
           <p>Pag-IBIG</p>
         </div>
       </div>
@@ -87,7 +85,7 @@
               id="nminput"
               value="0"
             />
-            <button type="submit">Return &nbsp;<span>-></span></button>
+            <button type="submit"><span><--</span> &nbsp; Return</button>
           </form>
         </div>
 
@@ -97,12 +95,10 @@
         <!-- income tax row -->
         <div class="r-entry ltr jtf rw">
           <div class="ac ltr">
-            <div class="lgc">
-              <img src="./assets/pw-btn.png" />
-            </div>
+            <img src="./st/assets/IT.png" />
             <h6>Income Tax</h6>
           </div>
-          <p>{{.IncomeTax}}</p>
+          <p>₱{{.IncomeTax}}</p>
         </div>
 
         <!-- divider -->
@@ -111,40 +107,34 @@
         <!-- net income after tax row -->
         <div class="r-niat ltr jtf ac rw mbx2">
           <h6>Net Income After Tax</h6>
-          <h3>{{.NetPayAfterTax}}</h3>
+          <h3>₱{{.NetPayAfterTax}}</h3>
         </div>
 
         <!-- sss row -->
         <div class="r-entry ltr jtf rw">
           <div class="ac ltr">
-            <div class="lgc">
-              <img src="./st/assets/pw-btn.png" />
-            </div>
+            <img src="./st/assets/SSS.png" />
             <h6>SSS Contribution</h6>
           </div>
-          <p>{{.SSS}}</p>
+          <p>₱{{.SSS}}</p>
         </div>
 
         <!-- pagibig row -->
         <div class="r-entry ltr jtf rw">
           <div class="ac ltr">
-            <div class="lgc">
-              <img src="./st/assets/pw-btn.png" />
-            </div>
+            <img src="./st/assets/PI.png" />
             <h6>Pag-IBIG Contribution</h6>
           </div>
-          <p>{{.PagIbig}}</p>
+          <p>₱{{.PagIbig}}</p>
         </div>
 
         <!-- philhealth row -->
         <div class="r-entry ltr jtf rw">
           <div class="ac ltr">
-            <div class="lgc">
-              <img src="./st/assets/pw-btn.png" />
-            </div>
+            <img src="./st/assets/PH.png" />
             <h6>PhilHealth Contribution</h6>
           </div>
-          <p>{{.PhilHealth}}</p>
+          <p>₱{{.PhilHealth}}</p>
         </div>
 
         <!-- divider -->
@@ -153,13 +143,13 @@
         <!-- total contributions row -->
         <div class="r-contri ltr jtf ac rw mbx2">
           <h6>Total Contributions</h6>
-          <h3>{{.TotalContributions}}</h3>
+          <h3>₱{{.TotalContributions}}</h3>
         </div>
 
         <!-- income tax row -->
         <div class="t-income ltr jtf ac rw">
           <h6>Income Tax</h6>
-          <p>{{.IncomeTax}}</p>
+          <p>₱{{.IncomeTax}}</p>
         </div>
 
         <!-- total contributions row -->
@@ -174,7 +164,10 @@
         <!-- net income after deductions row -->
         <div class="t-niad ltr jtf ac rw">
           <h6>Subtotal</h6>
-          <h3>{{.NetPayAfterDeductions}}</h3>
+          <div class="r-base-n ltr clr">
+            <h4>₱</h4>
+            <h3>{{.NetPayAfterDeductions}}</h3>
+          </div>
         </div>
       </div>
     </div>
